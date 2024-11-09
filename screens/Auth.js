@@ -7,12 +7,14 @@ import {
   View,
   TextInput,
   Image,
+  BackHandler,
 } from "react-native";
 import { Button } from "react-native-paper";
 
-export default function Authentification() {
-  const [phone, setPhone] = useState("");
+export default function Auth() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const refInput2 = useRef();
   return (
     <View style={styles.container}>
@@ -27,14 +29,14 @@ export default function Authentification() {
 
         <TextInput
           onChangeText={(text) => {
-            setPhone(text);
+            setEmail(text);
           }}
           onSubmitEditing={() => {
             refInput2.current.focus();
           }}
-          placeholder="Phone Number"
+          placeholder="Email"
           style={styles.input}
-          keyboardType="phone-pad"
+          keyboardType="email-pad"
           placeholderTextColor="#29138660"
         />
 
@@ -51,11 +53,18 @@ export default function Authentification() {
 
         <Button
           style={styles.button}
-          // onPress={() => {
-          //   alert("signin" + phone + "  " + password);
-          // }}
-        >
+          onPress={() => {
+            alert("signin" + email + "  " + password);
+          }}>
           <Text style={styles.buttonText}>Login</Text>
+        </Button>
+
+        <Button
+          style={styles.button}
+          onPress={() => {
+            BackHandler.exitApp();
+          }}>
+          <Text style={styles.buttonText}>Exit</Text>
         </Button>
       </ImageBackground>
     </View>
