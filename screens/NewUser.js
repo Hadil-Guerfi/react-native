@@ -9,12 +9,15 @@ import {
   Image,
 } from "react-native";
 import { Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
-export default function NewUser(props) {
+export default function NewUser() {
+  const navigation = useNavigation(); // Use useNavigation to get the navigation object
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const refInput2 = useRef();
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -71,7 +74,7 @@ export default function NewUser(props) {
         <Button
           style={styles.button}
           onPress={() => {
-            props.navigation.goBack(); 
+            navigation.goBack(); 
           }}>
           <Text style={styles.buttonText}>Back</Text>
         </Button>
